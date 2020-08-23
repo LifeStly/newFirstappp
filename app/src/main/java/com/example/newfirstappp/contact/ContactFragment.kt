@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.newfirstappp.R
 import com.example.newfirstappp.data.ConDatabase
 import com.example.newfirstappp.databinding.FragmentContactBinding

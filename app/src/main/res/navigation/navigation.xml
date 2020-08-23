@@ -18,5 +18,18 @@
         android:id="@+id/contactFragment"
         android:name="com.example.newfirstappp.contact.ContactFragment"
         android:label="fragment_contact"
-        tools:layout="@layout/fragment_contact" />
+        tools:layout="@layout/fragment_contact" >
+        <action
+            android:id="@+id/action_contactFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.newfirstappp.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+    </fragment>
 </navigation>

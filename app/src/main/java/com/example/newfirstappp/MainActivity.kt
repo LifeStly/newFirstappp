@@ -8,6 +8,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.newfirstappp.contact.ContactFragment
 import com.example.newfirstappp.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -68,6 +71,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
                     .commit()
             }
         }
+
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
