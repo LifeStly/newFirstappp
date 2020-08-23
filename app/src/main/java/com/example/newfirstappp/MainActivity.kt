@@ -10,22 +10,22 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.newfirstappp.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelectedListener{
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var navigate_view: NavigationView
+    private lateinit var nav_view: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         drawerLayout = binding.drawerLayout
-        navigate_view = binding.navView
-        navigate_view.setNavigationItemSelectedListener(this)
+        nav_view = binding.navView
+        nav_view.setNavigationItemSelectedListener(this)
 
         toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
         drawerLayout.addDrawerListener(toggle)
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.aboutFragment -> {
+            R.id.menu_about -> {
                 supportFragmentManager.beginTransaction()
                     .replace(
                         R.id.containFragment,
