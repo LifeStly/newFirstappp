@@ -1,4 +1,7 @@
 package com.example.newfirstappp.data
 
-class Database {
+import androidx.room.RoomDatabase
+
+abstract class Database : RoomDatabase(){
+    
 }
