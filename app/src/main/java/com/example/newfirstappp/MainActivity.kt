@@ -57,6 +57,16 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
                     .commit()
             }
         }
+        when (item.itemId) {
+            R.id.menu_contact -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(
+                        R.id.containFragment,
+                        AboutFragment()
+                    )
+                    .commit()
+            }
+        }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }

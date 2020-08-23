@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.newfirstappp.R
 import com.example.newfirstappp.data.ConDatabase
+import com.example.newfirstappp.databinding.FragmentContactBinding
 
 class ContactFragment : Fragment() {
 
@@ -21,7 +23,14 @@ class ContactFragment : Fragment() {
 
         val dataSource = ConDatabase.getInstance(application).conDatabaseDao
 
-        val viewModelFactory =
+        val viewModelFactory = ConViewModelFactory(dataSource,application)
+
+        val  conViewModel = ViewModelProvider(this,viewModelFactory).get(ConViewModel::class.java)
+
+        binding.setLifecycleOwner(this)
+        binding.conViewModel = conViewModel
+
+        return binding.root
     }
 
 }
