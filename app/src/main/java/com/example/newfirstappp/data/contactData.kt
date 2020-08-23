@@ -1,8 +1,13 @@
 package com.example.newfirstappp.data
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-class contactData {
+@Entity(tableName = "Table_contact")
+class contactData (
     @PrimaryKey(autoGenerate = true)
-    var contactId:Int,
-}
+    var contactId: Int,
+    @ColumnInfo(name = "name",defaultValue = "Unknown")
+    var name:String
+)
