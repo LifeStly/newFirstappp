@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">newFirstappp</string>
+    <string name="menu_about">About</string>
+    <string name="contact_menu">Contact</string>
 </resources>
