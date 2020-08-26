@@ -2,6 +2,7 @@ package com.example.newfirstappp.contact
 
 import android.app.Application
 import android.os.Build
+import android.provider.SyncStateContract.Helpers.insert
 import android.text.Html
 import android.text.Spanned
 import androidx.core.text.HtmlCompat
@@ -10,9 +11,7 @@ import androidx.lifecycle.Transformations
 import com.example.newfirstappp.data.ConDatabaseDao
 import com.example.newfirstappp.data.ContactData
 import com.example.newfirstappp.databinding.FragmentContactBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import java.lang.StringBuilder
 
 class ConViewModel(val database: ConDatabaseDao, val binding: FragmentContactBinding , application: Application) :
@@ -41,6 +40,23 @@ class ConViewModel(val database: ConDatabaseDao, val binding: FragmentContactBin
             Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
         } else {
             HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        }
+    }
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+    fun onContactAdd() {
+        uiScope.launch {
+            val newContact = ContactData()
+            newContact.name = binding.editTextTextPersonName.text.toString()
+            newContact.phone = binding.editTextTextPersonPhone.text.toString()
+            insert(newContact)
+        }
+    }
+    private suspend fun insert(contact: ContactData) {
+        withContext(Dispatchers.IO) {
+            database.insert(contact)
         }
     }
 }

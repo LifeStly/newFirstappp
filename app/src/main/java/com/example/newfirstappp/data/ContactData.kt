@@ -5,11 +5,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "Table_contact")
-class ContactData (
+data class ContactData (
     @PrimaryKey(autoGenerate = true)
     var contactId: Long = 0L,
-    @ColumnInfo(name = "name",defaultValue = "Unknown")
-    var name:String,
-    @ColumnInfo(name = "phone",defaultValue = "")
-    var phone:String
+    @ColumnInfo(name = "name")
+    var name: String = "unnamed",
+    @ColumnInfo(name = "phone")
+    var phone: String = ""
 )
