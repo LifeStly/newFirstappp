@@ -10,6 +10,6 @@ interface ConDatabaseDao {
     @Insert
     fun insert(contact: ContactData)
 
-    @Query("select * from table_contact order by contactId DESC")
-    fun getName(): LiveData<List<ContactData>>
+    @Query("select * from table_contact")
+    fun getAll(): LiveData<List<ContactData>>
 }
